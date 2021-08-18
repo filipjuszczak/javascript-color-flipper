@@ -1,13 +1,13 @@
 'use strict';
 
-const button = document.querySelector('.change-color');
-const background = document.querySelector('main');
+const btn = document.querySelector('.change-color');
+const bgc = document.querySelector('main');
 const span = document.querySelector('.color span');
 
-const flipper = () => {
-  let currentColor;
+const flipper = function () {
+  let currColor;
 
-  const generateRandomColor = () => {
+  const generateRandomColor = function () {
     const redValue = Math.floor(Math.random() * 256);
     const greenValue = Math.floor(Math.random() * 256);
     const blueValue = Math.floor(Math.random() * 256);
@@ -16,24 +16,26 @@ const flipper = () => {
     return generatedColor;
   };
 
-  const flipBackgroundColor = () => {
-    currentColor = generateRandomColor();
-    background.style.backgroundColor = currentColor;
+  const flipBackgroundColor = function () {
+    currColor = generateRandomColor();
+    bgc.style.backgroundColor = currColor;
   };
 
-  const updateColorText = () => {
-    span.textContent = `${currentColor};`;
-    span.style.color = currentColor;
+  const updateColorText = function () {
+    span.textContent = `${currColor};`;
+    span.style.color = currColor;
   };
 
-  const colorFlipper = () => {
+  const colorFlipper = function () {
     flipBackgroundColor();
     updateColorText();
   };
 
   return colorFlipper;
 };
+
 const colorFlipper = flipper();
 
-button.addEventListener('click', colorFlipper);
+btn.addEventListener('click', colorFlipper);
+
 window.onload = colorFlipper;
